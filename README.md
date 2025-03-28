@@ -1,16 +1,42 @@
-# Project 1 
+Group Members:
+Sudireddy Raghavender Reddy (A20554654)Rsudireddy@hawk.iit.edu
+Chaitanya Durgesh Nynavarapu(A20561894)cnynavarapu@hawk.iit.edu
+Purnachandra Reddy Peddasura(A20544751)ppeddasura@hawk.iit.edu
+-------------------------------------------------------------------
 
-Your objective is to implement the LASSO regularized regression model using the Homotopy Method. You can read about this method in [this](https://people.eecs.berkeley.edu/~elghaoui/Pubs/hom_lasso_NIPS08.pdf) paper and the references therein. You are required to write a README for your project. Please describe how to run the code in your project *in your README*. Including some usage examples would be an excellent idea. You may use Numpy/Scipy, but you may not use built-in models from, e.g. SciKit Learn. This implementation must be done from first principles. You may use SciKit Learn as a source of test data.
+Instructions to run code 
 
-You should create a virtual environment and install the packages in the requirements.txt in your virtual environment. You can read more about virtual environments [here](https://docs.python.org/3/library/venv.html). Once you've installed PyTest, you can run the `pytest` CLI command *from the tests* directory. I would encourage you to add your own tests as you go to ensure that your model is working as a LASSO model should (Hint: What should happen when you feed it highly collinear data?)
+go to project folder location in Comand prompt (Terminal) and type
+python -m venv myenv
+myenv\Scripts\activate
+pip install -r requirements.txt
+cd LassoHomotopy
+pytest tests/
 
-In order to turn your project in: Create a fork of this repository, fill out the relevant model classes with the correct logic. Please write a number of tests that ensure that your LASSO model is working correctly. It should produce a sparse solution in cases where there is collinear training data. You may check small test sets into GitHub, but if you have a larger one (over, say 20MB), please let us know and we will find an alternative solution. In order for us to consider your project, you *must* open a pull request on this repo. This is how we consider your project is "turned in" and thus we will use the datetime of your pull request as your submission time. If you fail to do this, we will grade your project as if it is late, and your grade will reflect this as detailed on the course syllabus. 
+--------------------------------------------------------------------
 
-You may include Jupyter notebooks as visualizations or to help explain what your model does, but you will be graded on whether your model is correctly implemented in the model class files and whether we feel your test coverage is adequate. We may award bonus points for compelling improvements/explanations above and beyond the assignment.
+to run example usage
+cd ..
+python example_usage.py
 
-Put your README here. Answer the following questions.
+-----------------------------------------------------------------------
 
-* What does the model you have implemented do and when should it be used?
-* How did you test your model to determine if it is working reasonably correctly?
-* What parameters have you exposed to users of your implementation in order to tune performance? 
-* Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
+we have tested the model on additional test cases
+test_sparsity
+test_high_alpha_zeroes_out
+test_comparison_with_sklearn
+test_edge_case_single_feature
+
+---------------------------------------------------------------------------------------------------------------------------
+What does the model you have implemented do and when should it be used?
+The model implements Lasso Regression using the Homotopy Method, which efficiently finds sparse solutions by shrinking some coefficients to zero. It is useful for feature selection and handling high-dimensional datasets such as machine learning tasks in genomics or text analysis.
+
+How did you test your model to determine if it is working reasonably correctly?
+The model was tested using pytest unit tests to check if it fits data correctly and produces predictions of the expected shape. Additionally, Jupyter Notebook visualizations were used to compare predicted vs. actual values and analyze the effect of regularization on coefficients.
+
+What parameters have you exposed to users of your implementation in order to tune performance?
+
+Users can adjust reg_strength to control regularization, max_steps for iteration limits, and threshold for convergence precision. These parameters allow fine-tuning of sparsity versus fit and computational efficiency.
+
+Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
+The model may struggle with highly correlated features, very large datasets, and unscaled input data. These issues could be eliminated by feature preprocessing, alternative optimization methods.

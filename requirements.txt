@@ -1,3 +1,6 @@
 numpy
 pytest
 ipython
+matplotlib
+seaborn
+scikit-learn
